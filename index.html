@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Open Source Pronunciation Guide</title>
+    <meta
+      name="description"
+      content="A community-built pronunciation guide for open source project names."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="title">The Open Source Pronunciation Guide</h1>
+        <p class="subtitle">
+          Because English was already weird, then Tech made it...weirder.
+        </p>
+
+        <div class="status" id="audioStatus" role="status" aria-live="polite">
+          <span class="status__dot" aria-hidden="true"></span>
+          <span class="status__text" id="audioStatusText">Checking audio…</span>
+          <button class="status__button" id="audioEnableButton" type="button">
+            Enable audio
+          </button>
+        </div>
+
+        <div class="search">
+          <label class="search__label" for="searchInput">Search</label>
+          <input
+            id="searchInput"
+            class="search__input"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            placeholder="Try: kubernetes, postgres, nginx…"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="meta" aria-label="Info">
+          <div class="meta__row">
+            <div class="meta__item">
+              <span class="meta__label">Projects</span>
+              <span class="meta__value" id="countLabel">0</span>
+            </div>
+            <div class="meta__item">
+              <span class="meta__label">Source</span>
+              <a
+                class="meta__link"
+                id="repoLink"
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </section>
+
+        <section aria-label="Projects">
+          <div id="loading" class="loading">Loading projects…</div>
+          <div id="error" class="error hidden"></div>
+          <div id="projects" class="projects" role="list"></div>
+          <div id="empty" class="empty hidden">
+            No matches. Try a different search.
+          </div>
+        </section>
+
+        <section class="contribute" aria-label="How to contribute">
+          <h2 class="contribute__title">Contribute a new pronunciation</h2>
+          <p class="contribute__text">
+            Add a new folder under <code>/projects</code>. The site discovers
+            folders automatically via the GitHub Contents API.
+          </p>
+
+          <pre class="contribute__code"><code>/projects/&lt;project-name&gt;/
+  &lt;project-name&gt;.mp3
+  description.txt
+  icon.png (optional)
+</code></pre>
+
+          <ul class="contribute__list">
+            <li>
+              <strong>MP3 filename:</strong> Prefer <code>&lt;folder&gt;.mp3</code>.
+              If you upload multiple MP3s, the UI will pick one (best effort).
+            </li>
+            <li>
+              <strong>Description:</strong> Put plain text in
+              <code>description.txt</code>.
+            </li>
+            <li>
+              <strong>Icon:</strong> Optional <code>icon.png</code>. Keep it under
+              <strong>128×128</strong> (and ideally &lt; 50KB). The UI will display
+              all icons at the same size.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__text">
+          Built for GitHub Pages. No build step. No frameworks.
+        </p>
+      </div>
+    </footer>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
